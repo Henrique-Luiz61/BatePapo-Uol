@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <link href="/CSS/reset.css" rel="stylesheet" />
+    <link href="/CSS/style.css" rel="stylesheet" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Encode+Sans:wght@100;200;300;400;500;600;700&family=Righteous&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,500&display=swap" rel="stylesheet"> 
+
+    <title>Bate-Papo Uol</title>
+</head>
+
+<body>
+    <div class="header">
+        <div class="logo-uol">
+            <img src="/IMG/bate-papo-logo.jpg">
+        </div>
+        <button data-test="open-participants" class="botao-contatos" >
+            <ion-icon class="abrir-contatos" name="people"></ion-icon>
+        </button>
+    </div>
+
+    <div class="notificacoes">
+        <div data-test="message" class="sala">
+            <h5>(09:21:45)</h5>
+            <p>João</p>
+            <h4>entra na sala...</h4>
+        </div>
+
+        <div data-test="message" class="mensagem">
+            <h5>(09:22:28)</h5>
+            <p>João para Todos: </p>
+            <h4>Bom dia</h4>
+        </div>
+
+        <div data-test="message" class="mensagem">
+            <h5>(09:22:38)</h5>
+            <p>Maria para João: </p>
+            <h4>Oi João :)</h4>
+        </div>
+
+        <div data-test="message" class="mensagem-reservada">
+            <h5>(09:22:48)</h5>
+            <p>João reservadamente para Maria: </p>
+            <h4>Oi gatinha quer tc?</h4>
+        </div>
+
+        <div data-test="message" class="sala">
+            <h5>(09:22:58)</h5>
+            <p>Maria</p>
+            <h4>sai da sala...</h4>
+        </div>
+    </div><!--notificacoes-->
+
+    <div class="footer">
+        <input data-test="input-message" class="write-here" value="Escreve aqui...">
+
+        <button data-test="send-message">
+            <ion-icon class="send-message" name="paper-plane-outline"></ion-icon>
+        </button>
+    </div>
+
+    <div class="sidebar escondido">
+        <div class="escolher-contato">
+            <p>Escolha um contato para enviar mensagem:</p>
+        </div>
+
+        <div class="contatos">
+            <div data-test="all" class="opcao-sidebar">
+                <ion-icon class="icon" name="people"></ion-icon>
+                <p>Todos</p>
+                <ion-icon data-test="check" class="selecionado escondido" name="checkmark-sharp"></ion-icon>
+            </div>
+            <div data-test="participant" class="opcao-sidebar">
+                <ion-icon class="icon" name="person-circle"></ion-icon>
+                <p>João</p>
+                <ion-icon data-test="check" class="selecionado escondido" name="checkmark-sharp"></ion-icon>
+            </div>
+            <div class="opcao-sidebar">
+                <ion-icon class="icon" name="person-circle"></ion-icon>
+                <p>Maria</p>
+                <ion-icon data-test="check" class="selecionado" name="checkmark-sharp"></ion-icon>
+            </div>
+        </div>
+
+        <div class="visibilidade">
+            <p>Escolha a visibilidade</p>
+        </div>
+
+        <div class="destino-mensagem">
+            <div data-test="public" class="opcao-sidebar">
+                <ion-icon class="icon" name="lock-open"></ion-icon>
+                <p>Público</p>
+                <ion-icon data-test="check" class="selecionado escondido" name="checkmark-sharp"></ion-icon>
+            </div>
+            <div data-test="private" class="opcao-sidebar">
+                <ion-icon class="icon" name="lock-closed"></ion-icon>
+                <p>Reservadamente</p>
+                <ion-icon data-test="check" class="selecionado" name="checkmark-sharp"></ion-icon>
+            </div>
+        </div>
+    </div> <!--sidebar-->
+</body>
+
+<script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+<script src="./script.js"></script>
+
+</html>
