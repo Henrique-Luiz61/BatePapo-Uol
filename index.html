@@ -11,7 +11,9 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Encode+Sans:wght@100;200;300;400;500;600;700&family=Righteous&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,500&display=swap" rel="stylesheet"> 
+    <link
+        href="https://fonts.googleapis.com/css2?family=Encode+Sans:wght@100;200;300;400;500;600;700&family=Righteous&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,500&display=swap"
+        rel="stylesheet">
 
     <title>Bate-Papo Uol</title>
 </head>
@@ -21,7 +23,7 @@
         <div class="logo-uol">
             <img src="/IMG/bate-papo-logo.jpg">
         </div>
-        <button data-test="open-participants" class="botao-contatos" >
+        <button data-test="open-participants" class="botao-contatos">
             <ion-icon class="abrir-contatos" name="people"></ion-icon>
         </button>
     </div>
@@ -53,9 +55,9 @@
     </div><!--notificacoes-->
 
     <div class="footer">
-        <input data-test="input-message" class="write-here" value="Escreve aqui...">
+        <input data-test="input-message" class="write-here" type="text" value="Escreve aqui...">
 
-        <button data-test="send-message">
+        <button data-test="send-message" onclick="enviarMensagem()">
             <ion-icon class="send-message" name="paper-plane-outline"></ion-icon>
         </button>
     </div>
