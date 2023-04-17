@@ -26,13 +26,9 @@ const mensagem = {
     type: "message"
 }
 
-mensagens.push(mensagem);
-console.log(mensagens);
-
 const promessa = axios.post('https://mock-api.driven.com.br/api/vm/uol/messages', mensagem);
 promessa.then(respostaMensagem);
 promessa.catch(erroEntrarNaSala);
-
 
 function respostaMensagem(respMensagem) {
     const entrar = respMensagem;
@@ -48,18 +44,10 @@ promessaGet.then(respostaGet);
 
 function respostaGet(respGet) {
     console.log(respGet.data);
-}
+    mensagens = respGet.data;
 
-function enviarMensagem() {
-    let mensagem = document.querySelector('input').value;
-    console.log(mensagem);
-    let objetoMensagem = {
-        from: nomeUsuario,
-        to: "Todos",
-        text: mensagem,
-        type: "message"
-    }
-}
+    renderizarMensagens();
+}  
 
 function verificaOnline() {
     const promessa = axios.post('https://mock-api.driven.com.br/api/vm/uol/status', objetoNomeUsuario);
@@ -85,11 +73,45 @@ function renderizarMensagens() {
         let mensagemRecebida = mensagens[i];
 
         divNotificacoes.innerHTML += 
-        `<div data-test="message" class="sala">
-            <h5>(09:21:45)</h5>
+        `<div data-test="message" class="mensagem">
+            <h5>${mensagemRecebida.time}</h5>
             <p>${mensagemRecebida.from}</p>
-            <h4>entra na sala...</h4>
-        </div>`;
+            <h6>para</h6> 
+            <p>${mensagemRecebida.to}</p>
+            <h4>${mensagemRecebida.text}</h4>
+        </div>`
+        ;
     }
 }
-renderizarMensagens();
+
+
+function enviarMensagem() {
+    let mensagemUsuario = document.querySelector('input').value;
+
+    let novaMensagem = {
+        from: nomeUsuario,
+        to: "Todos",
+        text: mensagemUsuario,
+        type: "message"
+    }
+
+    mensagens.push(novaMensagem);
+
+    const promessaMensagemEnviada = axios.post('https://mock-api.driven.com.br/api/vm/uol/messages', novaMensagem);
+    promessaMensagemEnviada.then(respostaNovaMensagem);
+    promessaMensagemEnviada.catch(erroNovaMensagem)
+}
+
+function respostaNovaMensagem(respMensagemEnviada){
+    const promise = axios.get('https://mock-api.driven.com.br/api/vm/uol/messages');
+    promise.then(respostaChegou);
+}
+
+function respostaChegou(response) {
+    mensagens = response.data;
+    renderizarMensagens();
+}
+
+function erroNovaMensagem(erro){
+    console.log(erro);
+}
