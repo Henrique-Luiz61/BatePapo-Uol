@@ -31,7 +31,6 @@ promessa.then(respostaMensagem);
 promessa.catch(erroEntrarNaSala);
 
 function respostaMensagem(respMensagem) {
-    const entrar = respMensagem;
     console.log(respMensagem);
 }
 
@@ -87,8 +86,6 @@ function renderizarMensagens() {
     }
 }
 
-setinterval(renderizarMensagens, 3000);
-
 function enviarMensagem() {
     let mensagemUsuario = document.querySelector('input').value;
 
@@ -119,3 +116,5 @@ function respostaChegou(response) {
 function erroNovaMensagem(erro){
     console.log(erro);
 }
+
+setinterval(renderizarMensagens, 3000);
