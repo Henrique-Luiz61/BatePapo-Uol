@@ -7,6 +7,27 @@ const objetoNomeUsuario = {
     name: nomeUsuario
 };
 
+function renderizarMensagens() {
+    const divNotificacoes = document.querySelector('.notificacoes');
+    divNotificacoes.innerHTML = '';
+
+    for (let i = 0; i < mensagens.length; i++) {
+        let mensagemRecebida = mensagens[i];
+
+        divNotificacoes.innerHTML += 
+        `<div data-test="message" class="mensagem">
+            <h5>${mensagemRecebida.time}</h5>
+            <p>${mensagemRecebida.from}</p>
+            <h6>para</h6> 
+            <p>${mensagemRecebida.to}</p>
+            <h4>${mensagemRecebida.text}</h4>
+        </div>`
+        ;
+    }
+}
+
+setinterval(renderizarMensagens, 3000);
+
 const promise = axios.post('https://mock-api.driven.com.br/api/vm/uol/participants', objetoNomeUsuario);
 promise.then(retornarResposta);
 promise.catch(deuErro);
@@ -39,11 +60,14 @@ function erroEntrarNaSala(erroEntrar) {
     console.log(erroEntrar.data);
 }
 
-const promessaGet = axios.get('https://mock-api.driven.com.br/api/vm/uol/messages');
-promessaGet.then(respostaGet); 
+function atualizaPagina() {
+    const promessaGet = axios.get('https://mock-api.driven.com.br/api/vm/uol/messages');
+    promessaGet.then(respostaGet); 
+}
+
+setInterval(atualizaPagina, 3000);
 
 function respostaGet(respGet) {
-    console.log(respGet.data);
     mensagens = respGet.data;
 
     renderizarMensagens();
@@ -64,26 +88,6 @@ function erroOnline(offline) {
 }
 
 setInterval(verificaOnline, 5000);
-
-function renderizarMensagens() {
-    const divNotificacoes = document.querySelector('.notificacoes');
-    divNotificacoes.innerHTML = '';
-
-    for (let i = 0; i < mensagens.length; i++) {
-        let mensagemRecebida = mensagens[i];
-
-        divNotificacoes.innerHTML += 
-        `<div data-test="message" class="mensagem">
-            <h5>${mensagemRecebida.time}</h5>
-            <p>${mensagemRecebida.from}</p>
-            <h6>para</h6> 
-            <p>${mensagemRecebida.to}</p>
-            <h4>${mensagemRecebida.text}</h4>
-        </div>`
-        ;
-    }
-}
-
 
 function enviarMensagem() {
     let mensagemUsuario = document.querySelector('input').value;
